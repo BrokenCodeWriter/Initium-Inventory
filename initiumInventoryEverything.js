@@ -2,6 +2,7 @@
 // @name         Inventory Everything
 // @namespace    http://tampermonkey.net/
 // @version      0.2
+// @supportURL   https://github.com/BrokenCodeWriter/Initium-Inventory
 // @description  Inventory all items in your house.
 // @author       BrokenSoul (with help from spfiredrake)
 // @match        *https://www.playinitium.com/*
