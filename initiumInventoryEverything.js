@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Inventory Everything
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @supportURL   https://github.com/BrokenCodeWriter/Initium-Inventory
 // @description  Inventory all items in your house.
 // @author       BrokenSoul (with help from spfiredrake)
@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 const ver = "inventorydata001";
-//GM_setValue(ver, JSON.stringify({}));  // I used this to clear inventory data
+GM_setValue(ver, JSON.stringify({}));  // I used this to clear inventory data
 
 // Notes:  This will inventory everything on the ground wherever you are
 // To inventory a store, click on the store.  It takes a long time
@@ -86,10 +86,10 @@ function getLocalStuff() {
                 for(var item in window.localItems) {
                     for (var itemid in window.localItems[item]) {
                         var parser = new ItemStatParser(); parser.FetchItem(itemid, function(itemObj) {
-                            if(data1[itemObj.Name]){
-                                data1[itemObj.Name].push(itemObj);
+                            if(data1.data){
+                                data1.data.push(itemObj);
                             }else{
-                                data1[itemObj.Name] = [itemObj];
+                                data1.data = [itemObj];
                             }
                             GM_setValue(ver, JSON.stringify(data1));
                             current = current + 1;
@@ -205,10 +205,10 @@ function getShopItems() {
 
                 var parser = new ItemStatParser(); parser.FetchItem(itemId, function(itemObj) {
                     //data1.push({[itemObj.Name]: itemObj});
-                    if(data1[itemObj.Name]){
-                        data1[itemObj.Name].push(itemObj);
+                    if(data1.data){
+                        data1.data.push(itemObj);
                     }else{
-                        data1[itemObj.Name] = [itemObj];
+                        data1.data = [itemObj];
                     }
                     GM_setValue(ver, JSON.stringify(data1));
                     current = current + 1;
